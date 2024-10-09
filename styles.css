@@ -17,21 +17,25 @@ body {
     background-color: #121212;
     color: #ffffff;
     margin: 0;
-    padding: 20px;
+    padding: 40px;
+    line-height: 1.6;
+    font-size: 18px;
 }
 
 h1 {
     text-align: center;
-    color: #ffcc00; /* Helle Farbe */
+    color: #ffcc00;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
+    max-width: 900px;
+    margin: 0 auto;
     background: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
 }
 
 ul {
@@ -41,31 +45,32 @@ ul {
 
 li {
     background: #272727;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 li:hover {
-    background: #ffcc00; /* Helle Farbe bei Hover */
+    background: #ffcc00;
+    transform: scale(1.02);
 }
 
 button {
-    background-color: #ff5733; /* Poppige Farbe */
+    background-color: #ff5733;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 button:hover {
-    background-color: #e65c00; /* Dunklere Farbe bei Hover */
+    background-color: #e65c00;
 }
 
 /* Popup Styles */
@@ -76,7 +81,7 @@ button:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -85,8 +90,34 @@ button:hover {
 .popup-content {
     background: white;
     color: black;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
     text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 10px;
+        width: 100%;
+    }
 }
