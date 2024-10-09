@@ -1,7 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Allergien</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h1>Hello World 2</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <div class="container">
+        <h1>Meine Allergien</h1>
+        <ul id="allergy-list">
+            <li>Pollens (z.B. Gräser, Bäume)</li>
+            <li>Hausstaubmilben</li>
+            <li>Tierhaare (z.B. Hunde, Katzen)</li>
+            <li>Nahrungsmittel (z.B. Nüsse, Laktose)</li>
+            <li>Medikamente (z.B. Penicillin)</li>
+        </ul>
+        <button id="add-allergy">Allergie hinzufügen</button>
+    </div>
+
+    <script>
+        document.getElementById('add-allergy').addEventListener('click', function() {
+            const allergy = prompt("Bitte gib deine Allergie ein:");
+            if (allergy) {
+                const li = document.createElement('li');
+                li.textContent = allergy;
+                document.getElementById('allergy-list').appendChild(li);
+            }
+        });
+    </script>
+
 </body>
 </html>
