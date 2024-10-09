@@ -3,65 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Allergien</title>
+    <title>Thomas' Allergien</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Thomas' Allergien</h1>
+        <p class="intro-text">Danke, dass du nachgefragt hast.</p>
+    </header>
 
-    <div class="container" role="main">
-        <h1>Meine Allergien</h1>
+    <main>
         <ul id="allergy-list">
-            <li>
-                <span>Schalenfrüchte</span>
-                <button aria-label="Information zu Schalenfrüchten" onclick="showPopup('schalenfruechte')">ℹ️</button>
-            </li>
+            <li onmouseover="showInfo('schalenfruechte')">Schalenfrüchte</li>
             <li>Eier</li>
             <li>Fisch</li>
             <li>Geflügel</li>
-            <li>
-                <span>Steinobst</span>
-                <button aria-label="Information zu Steinobst" onclick="showPopup('steinobst')">ℹ️</button>
-            </li>
+	<li>Äpfel</li>
+<li>Birnen</li>
+            <li onmouseover="showInfo('steinobst')">Steinobst</li>
             <li>Banane</li>
             <li>Avocado</li>
             <li>Kiwi</li>
             <li>Artischocke</li>
             <li>Aubergine</li>
         </ul>
-    </div>
+    </main>
 
-    <div id="popup" class="popup" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
+    <div id="popup" class="popup">
         <div class="popup-content">
-            <h2 id="popup-title"></h2>
             <p id="popup-text"></p>
-            <button onclick="closePopup()">Schließen</button>
         </div>
     </div>
 
     <script>
-        function showPopup(type) {
+        function showInfo(allergy) {
             const popup = document.getElementById('popup');
-            const title = document.getElementById('popup-title');
             const text = document.getElementById('popup-text');
+            let infoText = '';
 
-            if (type === 'schalenfruechte') {
-                title.textContent = 'Was sind Schalenfrüchte?';
-                text.textContent = 'Schalenfrüchte sind Nüsse und andere Früchte, die eine harte Schale haben. Dazu gehören: Mandeln, Walnüsse, Haselnüsse, Pistazien und viele andere.';
-            } else if (type === 'steinobst') {
-                title.textContent = 'Was ist Steinobst?';
-                text.textContent = 'Steinobst sind Früchte, die einen großen, harten Kern haben. Beispiele sind: Apfel, Birne, Pfirsich, Kirsche und mehr.';
+            if (allergy === 'schalenfruechte') {
+                infoText = 'Schalenfrüchte: Mandeln, Walnüsse, Haselnüsse, Cashewkerne, Pistazien, Macadamianüsse, Pekannüsse.';
+            } else if (allergy === 'steinobst') {
+                infoText = 'Steinobst: Pfirsiche, Kirschen, Aprikosen, Nektarinen, Zwetschgen, Pflaumen.';
             }
 
-            popup.setAttribute('aria-hidden', 'false');
+            text.textContent = infoText;
             popup.style.display = 'block';
         }
 
-        function closePopup() {
-            const popup = document.getElementById('popup');
-            popup.setAttribute('aria-hidden', 'true');
-            popup.style.display = 'none';
-        }
+        document.getElementById('allergy-list').addEventListener('mouseleave', function() {
+            document.getElementById('popup').style.display = 'none';
+        });
     </script>
-
 </body>
 </html>
