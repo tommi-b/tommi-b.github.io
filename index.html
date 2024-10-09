@@ -8,27 +8,59 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" role="main">
         <h1>Meine Allergien</h1>
         <ul id="allergy-list">
-            <li>Pollens (z.B. Gräser, Bäume)</li>
-            <li>Hausstaubmilben</li>
-            <li>Tierhaare (z.B. Hunde, Katzen)</li>
-            <li>Nahrungsmittel (z.B. Nüsse, Laktose)</li>
-            <li>Medikamente (z.B. Penicillin)</li>
+            <li>
+                <span>Schalenfrüchte</span>
+                <button aria-label="Information zu Schalenfrüchten" onclick="showPopup('schalenfruechte')">ℹ️</button>
+            </li>
+            <li>Eier</li>
+            <li>Fisch</li>
+            <li>Geflügel</li>
+            <li>
+                <span>Steinobst</span>
+                <button aria-label="Information zu Steinobst" onclick="showPopup('steinobst')">ℹ️</button>
+            </li>
+            <li>Banane</li>
+            <li>Avocado</li>
+            <li>Kiwi</li>
+            <li>Artischocke</li>
+            <li>Aubergine</li>
         </ul>
-        <button id="add-allergy">Allergie hinzufügen</button>
+    </div>
+
+    <div id="popup" class="popup" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
+        <div class="popup-content">
+            <h2 id="popup-title"></h2>
+            <p id="popup-text"></p>
+            <button onclick="closePopup()">Schließen</button>
+        </div>
     </div>
 
     <script>
-        document.getElementById('add-allergy').addEventListener('click', function() {
-            const allergy = prompt("Bitte gib deine Allergie ein:");
-            if (allergy) {
-                const li = document.createElement('li');
-                li.textContent = allergy;
-                document.getElementById('allergy-list').appendChild(li);
+        function showPopup(type) {
+            const popup = document.getElementById('popup');
+            const title = document.getElementById('popup-title');
+            const text = document.getElementById('popup-text');
+
+            if (type === 'schalenfruechte') {
+                title.textContent = 'Was sind Schalenfrüchte?';
+                text.textContent = 'Schalenfrüchte sind Nüsse und andere Früchte, die eine harte Schale haben. Dazu gehören: Mandeln, Walnüsse, Haselnüsse, Pistazien und viele andere.';
+            } else if (type === 'steinobst') {
+                title.textContent = 'Was ist Steinobst?';
+                text.textContent = 'Steinobst sind Früchte, die einen großen, harten Kern haben. Beispiele sind: Apfel, Birne, Pfirsich, Kirsche und mehr.';
             }
-        });
+
+            popup.setAttribute('aria-hidden', 'false');
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.setAttribute('aria-hidden', 'true');
+            popup.style.display = 'none';
+        }
     </script>
 
 </body>
